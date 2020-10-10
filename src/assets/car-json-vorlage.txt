@@ -1,41 +1,41 @@
 
 {
-    "name":"",
+    "brand":"",
     "children":[
         {
-            "name": "", 
+            "modell": "", 
             "children": [                                                
                 {
-                    "baujahr": "",
-                    "kraftstoff": "",
-                    "hsnTsn": ""
-                },
-                {
-                    "baujahr": "",
-                    "kraftstoff": "",
-                    "hsnTsn": ""
+                     "marke":"",
+                     "modell": "",
+                     "baujahr": "",
+                     "motor": "",
+                     "hsnTsn": "",
+                     "pic_url_front": "",
+                     "pic_url_back": "",
+                     "pic_url_inside": "",
+                     "krankheiten": ""
                 }
                 
             ]
         },
         {
-            "name": "", 
+            "modell": "", 
             "children": [                                                
-                {
-                    "baujahr": "",
-                    "kraftstoff": "",
-                    "hsnTsn": ""
-                },
-                {
-                    "baujahr": "",
-                    "kraftstoff": "",
-                    "hsnTsn": ""
+                 {
+                     "marke":"",
+                     "modell": "",
+                     "baujahr": "",
+                     "motor": "",
+                     "hsnTsn": "",
+                     "pic_url_front": "",
+                     "pic_url_back": "",
+                     "pic_url_inside": "",
+                     "krankheiten": ""
                 }
                 
             ]
-        }
-              
-        
-        
+        }        
+                
     ]
 }
