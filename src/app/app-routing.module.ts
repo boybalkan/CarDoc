@@ -11,6 +11,13 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+
+  {
+    path: 'audi',
+    loadChildren: () => import('./Hersteller/audi/audi.module').then( m => m.AudiPageModule)
+  },
+
+ 
 ];
 
 @NgModule({

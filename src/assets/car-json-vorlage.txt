@@ -1,0 +1,41 @@
+
+{
+    "name":"",
+    "children":[
+        {
+            "name": "", 
+            "children": [                                                
+                {
+                    "baujahr": "",
+                    "kraftstoff": "",
+                    "hsnTsn": ""
+                },
+                {
+                    "baujahr": "",
+                    "kraftstoff": "",
+                    "hsnTsn": ""
+                }
+                
+            ]
+        },
+        {
+            "name": "", 
+            "children": [                                                
+                {
+                    "baujahr": "",
+                    "kraftstoff": "",
+                    "hsnTsn": ""
+                },
+                {
+                    "baujahr": "",
+                    "kraftstoff": "",
+                    "hsnTsn": ""
+                }
+                
+            ]
+        }
+              
+        
+        
+    ]
+}

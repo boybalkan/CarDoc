@@ -1,0 +1,21 @@
+<ion-toolbar id="searchbar">
+  <ion-searchbar animated (ionChange)="sucheAutoHersteller($event)"></ion-searchbar>
+</ion-toolbar>
+
+<ion-list>
+  <ion-item *ngFor="let item of items">
+   {{ item.title }}
+    <ion-select id="dropdown" interface="popover" [(ngModel)]="selectedModell" (change)="print()">
+     <ion-select-option value="a1">A1</ion-select-option>
+      <ion-select-option value="a2">A2</ion-select-option>
+      <ion-select-option value="a3">A3</ion-select-option>
+      <ion-select-option value="a4">A4 </ion-select-option>
+      <ion-select-option value="a5">A5 </ion-select-option>
+      <ion-select-option value="a6">A6</ion-select-option>
+      <ion-select-option value="a7">A7</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  
+</ion-list>
+<ion-button (click)="print()">Click</ion-button>

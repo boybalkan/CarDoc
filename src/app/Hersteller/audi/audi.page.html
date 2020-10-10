@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>  </ion-title>
+      <h3 id="carDescription" class="verical-center"> {{ car.marke }}  {{ car.modell }}  {{ car.motor }}   </h3>
+   
+    <p id="ident" class="verical-center">({{ car.hsnTsn}})</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-slides pages>
+    <ion-slide>
+      <img src="{{ car.pic_url_front }}" alt="" class="carImg">
+    </ion-slide>
+    <ion-slide>
+      <img src="{{ car.pic_url_back }}" alt="" class="carImg">
+    </ion-slide>
+    <ion-slide>
+      <img src="{{ car.pic_url_inside }}" alt="" class="carImg">
+    </ion-slide>
+  </ion-slides>
+  
+
+  <p id="krankheiten">
+    {{ car.krankheiten }}
+  </p>
+
+  
+  
+</ion-content>
+
+<app-footer>
+  
+</app-footer>

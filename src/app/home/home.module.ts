@@ -5,6 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { HeaderComponent } from '../components/header/header.component';
+import { FooterComponent } from '../components/footer/footer.component';
+import { RouterModule } from '@angular/router';
+import { SharedComponentsModule } from '../components/shared-components.module';
 
 
 @NgModule({
@@ -12,8 +16,15 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    RouterModule.forChild([
+      {
+        path: '',
+        component: HomePage
+      }
+    ]),
+    HomePageRoutingModule,
+    SharedComponentsModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, HeaderComponent, FooterComponent]
 })
 export class HomePageModule {}
