@@ -1,19 +1,26 @@
 <ion-footer >
   <ion-toolbar >
     <ion-grid class="footer-grid">
-      <ion-row>        
-        <ion-col>
-          <a href="/home">
+      <ion-row>   
+       
+        <ion-col (click)="goBack()">
+          
+            <ion-icon name="arrow-undo-outline" class="footer-icon-button"></ion-icon>
+           
+        </ion-col>
+
+        <ion-col no-padding>
+          <a href="/start">
             <ion-icon name="home-outline" class="footer-icon-button"></ion-icon>
           </a>
         </ion-col>
- <!--   Feature um autos als Favorit zu speichern
-       <ion-col>
-          <a href="/home">
+   
+       <ion-col >
+          <a href="/favorites">
             <ion-icon name="star-outline" class="footer-icon-button"></ion-icon>
            </a>
         </ion-col>
-  --> 
+  
       </ion-row>
     </ion-grid> 
  </ion-toolbar>

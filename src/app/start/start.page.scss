@@ -1,0 +1,26 @@
+.text{
+    margin-left: 2%;
+    width: 90%;
+   
+}
+
+ion-grid{
+    margin: 5% 5% 5% 5%;
+}
+
+  ion-col{
+      height: 150px;
+      border: solid 1px lightgray;
+      margin: 2px;
+  }
+  ion-button{
+      height: 130px;
+  }
+
+  #search-Button{
+    --ion-background: #007c34;
+    width: 86%;
+    height: 40px;
+    margin: 0 7% ;
+  }
+

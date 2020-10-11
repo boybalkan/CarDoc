@@ -15,7 +15,7 @@
                             "pic_url_front": "https://d1b9m7lmejcu5w.cloudfront.net/gallery-pictures/izmo/bff56d68df-b3726.jpg",
                             "pic_url_back":"https://upload.wikimedia.org/wikipedia/commons/c/cc/Audi_A1_1.4_TFSI_Ambition_%E2%80%93_Heckansicht%2C_7._April_2011%2C_Velbert.jpg",
                             "pic_url_inside": "https://www.handelsblatt.com/images/auf-top-niveau-/13804800/2-format2020.jpg",
-                            "krankheiten": "Ab 15.000km funktioniert die Lftung nicht mehr"
+                            "krankheiten": "Ab 15.000km funktioniert die Lüftung nicht mehr"
                         },
                         {
                             "marke":"Audi",
@@ -1923,18 +1923,8 @@
                 
             ]
         }
-
-        
-
-        
-
-        
         
     ]
-
-
-
-
 
 }
 

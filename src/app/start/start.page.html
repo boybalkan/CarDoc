@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<ion-content>
+  <!--  
+  <ion-list class="text" >
+    <ion-item> <h5>Meistgesuchte Automarken...</h5></ion-item>
+  </ion-list>
+ -->
+
+  
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button color="clear" [routerLink]="['/home', 0]" >  
+          <img src="./assets/brands/Audi_logo.svg" alt="Audi-Logo">
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="clear" [routerLink]="['/home', 1]"  >
+          <img src="./assets/brands/Bmw_logo.svg" alt="BMW-Logo">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button   color="clear" [routerLink]="['/home', 2]" >
+          <img src="./assets/brands/Mercedes_logo.png" alt="Mercedes-Logo">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="clear"  [routerLink]="['/home', 3]" >  
+          <img src="./assets/brands/Volkswagen_logo.svg" alt="VW-Logo">
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button  color="clear" [routerLink]="['/home', 4]" >
+          <img src="./assets/brands/Ford.png" alt="Ford-Logo">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button [routerLink]="['/home', -1]"  expand="block" color="success" id="search-Button"><ion-icon name="search-outline"></ion-icon> Suche</ion-button>
+  
+</ion-content>
+
+<app-footer></app-footer>

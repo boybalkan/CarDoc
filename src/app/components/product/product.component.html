@@ -2,15 +2,15 @@
   <ion-grid>
     <ion-row  align-items-center (click)="navigateToCarModellDescription()" >
       <ion-col>
-        <p class="child-item-infos" >  <b>HSN/TSN</b> <br>  {{ product.hsnTsn }}<p>       
+        <p class="child-item-infos" >  <b>HSN/TSN</b> <br>  {{ product.hsnTsn | uppercase }}<p>       
       </ion-col>
 
       <ion-col>
-        <p class="child-item-infos"> <b>BAUJAHR</b>  <br> {{ product.baujahr }}</p>
+        <p class="child-item-infos"> <b>BAUJAHR</b>  <br> {{ product.baujahr | uppercase }}</p>
       </ion-col>
 
       <ion-col>
-        <p class="child-item-infos"> <b>MOTOR</b>  <br>  {{ product.motor }}</p>
+        <p class="child-item-infos"> <b>MOTOR</b>  <br>  {{ product.motor | uppercase }}</p>
       </ion-col>
 
     </ion-row>    

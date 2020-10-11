@@ -20,9 +20,9 @@ export class ProductComponent implements OnInit {
   
 
   navigateToCarModellDescription(e:String){
-    console.log(this.product.hsnTsn);
+    //console.log(this.product.hsnTsn);
     this.navExtras.setDataSerivce(this.product);
-    this.router.navigateByUrl("audi");
+    this.router.navigateByUrl("car");
   }
 
 }

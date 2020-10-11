@@ -3,18 +3,25 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'home/:pos',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'start',
     pathMatch: 'full'
   },
-
   {
-    path: 'audi',
-    loadChildren: () => import('./Hersteller/audi/audi.module').then( m => m.AudiPageModule)
+    path: 'favorites',
+    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
+  },
+  {
+    path: 'start',
+    loadChildren: () => import('./start/start.module').then( m => m.StartPageModule)
+  },
+  {
+    path: 'car',
+    loadChildren: () => import('./car/car.module').then( m => m.CarPageModule)
   },
 
  

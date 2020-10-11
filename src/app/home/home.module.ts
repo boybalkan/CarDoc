@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { HeaderComponent } from '../components/header/header.component';
-import { FooterComponent } from '../components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { SharedComponentsModule } from '../components/shared-components.module';
 
@@ -25,6 +23,6 @@ import { SharedComponentsModule } from '../components/shared-components.module';
     HomePageRoutingModule,
     SharedComponentsModule
   ],
-  declarations: [HomePage, HeaderComponent, FooterComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule {}

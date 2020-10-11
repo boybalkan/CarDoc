@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -10,43 +11,37 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePage implements OnInit{
 
+sub:any;
+mostSearched :any;
+  
 information:any[];
 automaticClose = true;
 searchData:any[];
 allInformation:any[] ;
 
 
-public items: Array<{ marke:string; modell:String, hsnTsn:String }> = [];
-public allItems: Array<{ marke:string; modell:String, hsnTsn:String  }> = [];
-
-constructor(private http: HttpClient, private dataService :DataService){
+constructor(private http: HttpClient, private dataService :DataService, private pos:ActivatedRoute ){
   this.http.get('assets/information.json')
     .subscribe(res => {
     this.information = res['items'];
     this.allInformation=res['items'];
     
 
-    this.information[0].open = true;
-    
-    
-
-    for(let i = 0; i < this.information.length; i++){
-      for(let j = 0; j < this.information[i].children.length; j++){
-        for(let k = 0; k < this.information[i].children[j].children.length; k++){
-        this.items.push({
-        marke: this.information[i].brand ,
-        modell: this.information[i].children[j].modell,
-        hsnTsn: this.information[i].children[j].children[k].hsnTsn 
-      });
-    }  
-    }
+    this.sub = this.pos.params.subscribe(params => {
+    this.mostSearched = params['pos'];
+    //console.log(params);
+   });
+   if(this.mostSearched >= 0){
+    this.openAccordion(this.mostSearched);
+    console.log(this.mostSearched);
+   }else{
+    console.log(this.mostSearched);
    }
-   console.log(this.items);
+  
+   //console.log(this.items);
    
   });
  
- 
-  this.allItems = this.items;
   this.allInformation = this.information;
 }
  ngOnInit(){
@@ -71,6 +66,10 @@ toggleItem(index, childIndex){
     .filter((item,cIndex) => cIndex != childIndex)
     .map(item => item.open = false);
   }
+}
+
+openAccordion(i){
+  this.information[i].open = true;
 }
 
 sucheAutoHersteller(ev: CustomEvent){
