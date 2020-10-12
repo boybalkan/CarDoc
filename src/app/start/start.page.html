@@ -1,4 +1,6 @@
-<app-header></app-header>
+<ion-header>
+  <app-header></app-header>
+</ion-header>
 
 <ion-content>
   <!--  
@@ -44,7 +46,9 @@
   </ion-grid>
 
   <ion-button [routerLink]="['/home', -1]"  expand="block" color="success" id="search-Button"><ion-icon name="search-outline"></ion-icon> Suche</ion-button>
-  
+ 
+    <app-header></app-header>
+
 </ion-content>
 
 <app-footer></app-footer>

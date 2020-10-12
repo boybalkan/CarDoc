@@ -26,6 +26,16 @@
       font-size: small;
          
    }
+#favButton:hover{
+    background-color: orange;
+}
+#favIcon{
+    color: black;
+}
+ion-icon:hover{
+    color: orange;
+
+}
   .carImg{
       width: 90%;
       margin: 5% 5%;

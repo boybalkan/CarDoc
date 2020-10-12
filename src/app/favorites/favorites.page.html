@@ -1,9 +1,19 @@
-<app-header>
-
-</app-header>
+<ion-header>
+    <app-header></app-header>
+  </ion-header>
 
 <ion-content>
 FAVORITEN
+
+<ion-list *ngFor="let car of allFavCars" lines="none">
+    <ion-item>
+        <ion-label> {{ car.marke}} </ion-label>
+        <ion-label> {{ car.modell}} </ion-label>
+        <ion-label> {{ car.motor}} </ion-label>
+        <ion-label> {{ car.baujahr}} </ion-label>
+    </ion-item>
+  
+</ion-list>
 </ion-content>
 
 <app-footer></app-footer>

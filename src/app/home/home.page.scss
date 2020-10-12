@@ -1,17 +1,24 @@
+ion-searchbar, ion-toolbar{
+  margin: 0;
+  padding: 0;
+  //--background: lightgray;
+}
 #searchbar{
-  margin-top: 5px;
+  margin: 5px 5% 5px 5%;
+  width: 90%;
 }
 
-ion-header, app-footer{
-  --ion-item-background: #6c6c6c;
+ion-content{
+  //--background: lightgray;
+ 
 }
 
 .accordion-list{
   padding: 0px;
   margin: 0 5% 1px 5%;
+ // --ion-item-background: lightgray;
   
-  --ion-item-background:var(--ion-color-light);
-
+  
   .section, .section-active{
     --height: 15px;
      
@@ -19,12 +26,12 @@ ion-header, app-footer{
 }
 
 .section{
-  --ion-item-background: #6c6c6c; //Marke
+  --ion-item-background: #598059; //Marke
   --ion-item-color: #fff;
  
 }
 .section-active{
-  --ion-item-background: #585858; //Marke-Aktiv
+  --ion-item-background: #008f00; //Marke-Aktiv
   --ion-item-color: #fff;
   font-weight: 600;
   margin-bottom: 2px;
@@ -44,12 +51,12 @@ ion-header, app-footer{
 }
 
 .child{
-  --ion-item-background: #8c8c8c; //Modell
+  --ion-item-background: #72a372; //Modell
   --ion-item-color: #fff;
 }
 
 .child-active{
-  --ion-item-background: #585858; //Modell Aktiv
+  --ion-item-background: #008f00; //Modell Aktiv
   --ion-item-color: #fff;
   font-weight: 600;
 
