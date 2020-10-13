@@ -3,17 +3,29 @@
   </ion-header>
 
 <ion-content>
-FAVORITEN
+<ion-label> FAVORITEN </ion-label> 
 
 <ion-list *ngFor="let car of allFavCars" lines="none">
-    <ion-item>
-        <ion-label> {{ car.marke}} </ion-label>
-        <ion-label> {{ car.modell}} </ion-label>
-        <ion-label> {{ car.motor}} </ion-label>
-        <ion-label> {{ car.baujahr}} </ion-label>
-    </ion-item>
-  
+  <ion-grid>
+    <ion-row  align-items-center >     
+      <ion-col>
+        <ion-item class="child-item-infos"> {{ car.marke | uppercase }} {{ car.modell | uppercase }}</ion-item >
+      </ion-col>
+      <ion-col>
+        <ion-item class="child-item-infos">   {{ car.motor | uppercase }}</ion-item >
+      </ion-col>
+      <ion-col>
+        <ion-item class="child-item-infos"> {{ car.baujahr  }}</ion-item >
+      </ion-col>     
+    </ion-row>
+  </ion-grid>  
 </ion-list>
+
+<!--  
+  <ion-item >
+    JSON Car:  {{ favCars?.marke }} : {{ favCars?.modell }} :{{ favCars?.baujahr }} : {{ favCars?.hsnTsn }} : {{ favCars?.krankheiten }}
+  </ion-item >
+-->
 </ion-content>
 
 <app-footer></app-footer>

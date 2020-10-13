@@ -1,17 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>  </ion-title>
       <h3 id="carDescription" class="verical-center"> {{ car.marke }}  {{ car.modell }}  {{ car.motor }}   </h3>
    
-    <p id="ident" class="verical-center">({{ car.hsnTsn}})</p>
+      <p id="ident" class="verical-center">({{ car.hsnTsn}})</p>
+
+     <ion-icon  name="star-outline" *ngIf="!isFav" class="favIcon verical-center"  (click)="addToFavorites(car)"></ion-icon>
+      <ion-icon name="star" *ngIf="isFav" class="favIcon verical-center"  (click)="addToFavorites(car)"></ion-icon>
+   
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button color="clear" id="favButton"(click)="addToFavorites(car)">
+  
+  <!-- 
+  <ion-button color="clear" id="favButton"(click)="getStorage()">
     <ion-icon name="star-outline"  id="favIcon"></ion-icon>
   </ion-button>
- 
+  <ion-button  id="favButton"(click)="clearStorage()">
+    CLEAR
+  </ion-button>
+  <ion-item>
+    Get LocalStorage string name : {{ marke }}
+  </ion-item>
+  <ion-item>
+    JSON Car:  {{ car?.marke }} : {{ car?.modell }} :{{ car?.baujahr }} : {{ car?.hsnTsn }} : {{ car?.krankheiten }}
+  </ion-item>
+ -->
+
   <ion-slides pages>
     <ion-slide>
       <img src="{{ car.pic_url_front }}" alt="" class="carImg">
