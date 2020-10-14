@@ -1,38 +1,61 @@
 import { Injectable } from '@angular/core';
 import { Plugins } from '@capacitor/core';
+import { Storage } from '@ionic/storage';
+//const { Storage } = Plugins;
 
-const { Storage } = Plugins;
+export interface favCar{
+    marke:String;
+    modell:String;
+    baujahr:String;
+    motor:String;
+    hsnTsn:String;
+    krankheiten:String;
+}
+
+const FAVCARSKEY = 'my-fav-cars';
 
 @Injectable({
     providedIn: 'root'
 })
 export class StorageService {
+   
 
-    constructor() { }
+ //   constructor(private storage:Storage) { }
+      constructor() { }
 
-    async setString(key: string, value: string) {
-        await Storage.set({ key, value });
+
+ /*   
+    addFavCar(item: favCar): Promise<any>{
+        return this.storage.get(FAVCARSKEY).then((items : favCar[])=>{
+            if(items){
+                items.push(item);
+                return this.storage.set(FAVCARSKEY, items);
+            }else{
+                return this.storage.set(FAVCARSKEY, [item]);
+            }
+        });
     }
 
-    async getString(key: string): Promise<{ value: any }> {
-        return (await Storage.get({ key }));
+    getFavCar(): Promise<favCar[]>{
+        return this.storage.get(FAVCARSKEY);
     }
 
-    async setObject(key: string, value: any) {
-        await Storage.set({ key, value: JSON.stringify(value) });
-    }
+    deleteFavCar(hsnTsn:String): Promise<favCar>{
+        return this.storage.get(FAVCARSKEY).then((items:favCar[]) => {
+            if(!items || items.length === 0){
+                return null;
+            }
+            let toKeep: favCar[] = [];
 
-    async getObject(key: string): Promise<{ value: any }> {
-        const ret = await Storage.get({ key });
-        return JSON.parse(ret.value);
+            for ( let i of items){
+                if(i.hsnTsn !== hsnTsn){
+                    toKeep.push(i);
+                }
+            }
+            return this.storage.set(FAVCARSKEY, toKeep);
+        });
     }
-
-
-    async removeItem(key: string) {
-        await Storage.remove({ key });
-    }
-
-    async clear() {
-        await Storage.clear();
-    }
+    
+*/
+ 
 }

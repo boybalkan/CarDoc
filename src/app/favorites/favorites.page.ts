@@ -1,7 +1,15 @@
+import { Statement } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { DataService } from '../services/data.service';
-import { StorageService } from '../services/storage.service';
+
+import { Plugins } from '@capacitor/core';
+import { Platform, ToastController } from '@ionic/angular';
+import { favCar, StorageService } from '../services/storage.service';
+
+
+
+const { Storage } = Plugins;
+
+export interface b{value:String};
 
 @Component({
   selector: 'app-favorites',
@@ -11,46 +19,53 @@ import { StorageService } from '../services/storage.service';
 export class FavoritesPage implements OnInit {
   @Input('product') product:any;
 
-  favCars:any[] = [];
-  allFavCars:any[] = 
-  [
-    {marke:"Audi",modell: "A1",  baujahr: "2014-2018", motor: "1.4 TFSI", hsnTsn: "0588/ANX", krankheiten:"Ab 15000km Lüftung im Arsch"},
-    {marke:"Audi",modell: "A2",  baujahr: "2010-2012", motor: "1.6 TDI", hsnTsn: "0588/ANX", krankheiten:"Ab 15000km Lüftung im Arsch"}
-  ];
+   testVlue:string;
+  favCars: favCar[] = [];
+  newFavCar: favCar = <favCar>{};
+
+  alles:b = <b>{};
+  
  
-  constructor(private cars:DataService, private router:Router, private storage:StorageService) {
-    //this.favCars = cars.getDataService();
-    //this.setStorage(JSON.stringify( this.favCars));
-    //console.log(this.car);
-    
-    //this.allFavCars.push(this.favCars);
-    
-    //this.allFavCars=this.favCars;
-    //this.getStorage();
-    console.log(this.allFavCars);
-    
+  constructor(private storageService:StorageService, private plt:Platform, private toastController:ToastController) {   
+  //  this.plt.ready().then(() => {
+   //   this.loadItems();
+    //});
+
+    this.getItem();
+
+
    }
 
   ngOnInit() {
   }
 
-  getStorage() {
-    this.storage.getObject('car').then((data: any) => {
-      this.allFavCars = data;
+  async getItem(){
+    const products = await Storage.get({key:'products'});
+   
+    console.log(JSON.parse(products.value));
+  }
+/*
+  loadItems(){
+    this.storageService.getFavCar().then(favCar => {
+      this.favCars = favCar;
+      console.log(this.favCars);
     });
-    console.log(this.allFavCars);
   }
 
-  setStorage(car:any) {
+  async showToast(msg){
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  deleteItem(favCar:favCar){
+    this.storageService.deleteFavCar(favCar.hsnTsn).then(facCar => {
+      this.showToast("FavCar removed!");
     
-    this.storage.setObject('car', {
-      marke:car.marke,
-      modell:car.modell,
-      baujahr:car.baujahr,
-      motor:car.motor,
-      hsnTsn:car.hsnTsn,
-      krankheiten:car.krankheiten
+      this.loadItems();
     });
   }
-
+  */
 }

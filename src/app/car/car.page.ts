@@ -1,74 +1,122 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Plugins } from '@capacitor/core';
+import { Platform, ToastController} from '@ionic/angular';
 import { DataService } from '../services/data.service';
 
 
-import { StorageService } from '../services/storage.service';
+import { favCar, StorageService } from '../services/storage.service';
+const { Storage } = Plugins;
 
 @Component({
   selector: 'app-car',
   templateUrl: './car.page.html',
   styleUrls: ['./car.page.scss'],
 })
+
+
 export class CarPage implements OnInit {
   @Input('product') product:any;
   isFav:boolean=false;
-   /*
-  person = { name: "Audi", country:"A1"};
-  marke:string="Audi";
-  modell:string="A1";
-  baujahr:string="2008-1012";
-  motor:string="1.4 TFSI";
-  hsnTsn:string="0588/ANX";
-  krankheiten:string="Ab 15 gehtnichts mehr";
 
-  storageName:string;
-*/
-  car = [];
-  constructor(private navExtras:DataService, private router:Router, private storage:StorageService) {
+  favCars: favCar[] = [];
+  newFavCar: favCar = <favCar>{};
+  car : favCar = <favCar>{};
+
+  constructor(private navExtras:DataService, private router:Router, private storage:StorageService, private storageService:StorageService, private plt:Platform, private toastController:ToastController) {
     this.car = navExtras.getDataService();
-    //console.log(this.car);
+    console.log(this.car);
+    
+  //  this.plt.ready().then(() => {
+      //this.loadItems();
+   // });
+    //this.setItem();
+
    }
   
   ngOnInit() {
   }
 
-  async addToFavorites(car:any){
-    this.navExtras.setDataSerivce(this.car);
-    if(!this.isFav){
-      this.isFav=true;
-    }else{
-      this.isFav=false;
-    }
-   
-    //this.router.navigateByUrl("favorites");
-  }
-  /*
-  setStorage(car) {
-    this.storage.setString('marke', this.marke);
-    this.storage.setObject('car', {
-      marke:this.marke,
-      modell:this.modell,
-      baujahr:this.baujahr,
-      motor:this.motor,
-      hsnTsn:this.hsnTsn,
-      krankheiten:this.krankheiten
-    });
-  }
+  async setItem(){
+    const cartvalue = JSON.stringify([{
+        id:1,
+        product:'Apple'
+    },{
+        id:2,
+        product:'Banana'
+    },{
+        id:3,
+        product:'Acoacdo'
+    }])
 
-  getStorage() {
-    this.storage.getString('marke').then((data: any) => {
-      if (data.value) {
-        this.marke = data.value;
+    await Storage.set({
+        key:'products',
+        value: cartvalue
+    });
+    await Storage.set({
+      key:"favCars",
+      value: JSON.stringify(this.car)
+    });
+    
+}
+async getItem(){
+  const products = await Storage.get({key:'favCars'});
+  
+  console.log(JSON.parse(products.value));
+}
+async removeItem(){
+  await Storage.remove({key:'products'});
+}
+
+/*
+  addItem(){
+    this.newFavCar.hsnTsn = this.car.hsnTsn;
+    this.newFavCar.marke = this.car.marke;
+    this.newFavCar.baujahr = this.car.baujahr;
+    this.newFavCar.modell = this.car.modell;
+    this.newFavCar.motor = this.car.motor;
+    this.newFavCar.krankheiten = this.car.krankheiten;
+
+    this.storageService.addFavCar(this.newFavCar).then(favCar => {
+      this.newFavCar = <favCar>{};
+      this.showToast('Added to Favorites!');
+      if(!this.isFav){
+        this.isFav=true;
+      }else{
+        this.isFav=false;
       }
+      this.loadItems();
+      console.log(this.favCars);
     });
-    this.storage.getObject('car').then((data: any) => {
-      this.car = data;
+    console.log(this.newFavCar);
+  }
+  
+  deleteItem(favCar:favCar){
+    this.storageService.deleteFavCar(favCar.hsnTsn).then(facCar => {
+      this.showToast("FavCar removed!");
+      if(!this.isFav){
+        this.isFav=true;
+      }else{
+        this.isFav=false;
+      }
+      //this.myList.closeSlidingItems();
+      this.loadItems();
     });
   }
 
-  clearStorage(){
-    this.storage.clear();
+  loadItems(){
+    this.storageService.getFavCar().then(favCar => {
+      this.favCars = favCar;
+    });
+  }
+
+  async showToast(msg){
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
   */
+
 }

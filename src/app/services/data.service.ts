@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { favCar } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  extras:any[];
+  extras: favCar = <favCar>{};;
   searchData:any[];
   
 
