@@ -25,13 +25,15 @@ export class CarPage implements OnInit {
 
   constructor(private navExtras:DataService, private router:Router, private storage:StorageService, private storageService:StorageService, private plt:Platform, private toastController:ToastController) {
     this.car  = navExtras.getDataService();
-    this.favCars.push(this.car);
+    //this.favCars.push(this.car);
     //console.log(this.favCars);
+    //this.addItem();
 
     
    
     //this.setItem();
     this.addItem();
+   
     this.plt.ready().then(() => {
       this.loadItems();      
     });
@@ -39,37 +41,27 @@ export class CarPage implements OnInit {
   
   ngOnInit() {
   }
+
+
   async setItem(){
-  /*  const cartvalue = JSON.stringify([{
-        marke:this.car.marke,
-        modell:this.car.modell,
-        hsnTsn:this.car.hsnTsn,
-        motor:this.car.motor,
-        baujahr:this.car.baujahr,
-        krankheiten: this.car.krankheiten
-    }])
-    await Storage.set({
-        key:'products',
-        value: cartvalue
-    });
-*/
     await Storage.set({
       key:"favCars",
       value: JSON.stringify(this.favCars)
     });
 
     if(!this.isFav || this.car === null){
+      this.showToast('Added to Favorites!');
       this.isFav=true;
     }else{
+      this.showToast("FavCar removed!");
       this.isFav=false;
-    }
-    
+    }    
 }
 
 async getItem(): Promise<favCar[]>{
   const products = await Storage.get({key:'products'});
   //console.log(products.value);
-  console.log(JSON.parse(products.value));
+  //console.log(JSON.parse(products.value));
   return JSON.parse(products.value);
 }
 async removeItem(){
@@ -77,7 +69,7 @@ async removeItem(){
 }
 
 
-  addItem(){
+ addItem(){
     this.newFavCar.hsnTsn = this.car.hsnTsn;
     this.newFavCar.marke = this.car.marke;
     this.newFavCar.baujahr = this.car.baujahr;
@@ -87,17 +79,12 @@ async removeItem(){
 
     this.storageService.addFavCar(this.newFavCar).then(favCar => {
       this.newFavCar = <favCar>{};
-      this.showToast('Added to Favorites!');
-      if(!this.isFav){
-        this.isFav=true;
-      }else{
-        this.isFav=false;
-      }
+      
       this.loadItems();
-      console.log(this.favCars);
-      this.setItem();
+      //console.log(this.favCars);
+      
     });
-    console.log(this.newFavCar);
+    console.log(this.newFavCar);    
   }
   
   deleteItem(favCar:favCar){

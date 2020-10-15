@@ -29,10 +29,10 @@ export class FavoritesPage implements OnInit {
   constructor(private storageService:StorageService, private plt:Platform, private toastController:ToastController) {   
     (this.getItem());
     
-   /* this.plt.ready().then(() => {
+    this.plt.ready().then(() => {
       this.loadItems();
     });
-    */
+    
    }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class FavoritesPage implements OnInit {
     await Storage.remove({key:'favCars'});
   }
 
-/*  loadItems(){
+  loadItems(){
     this.storageService.getFavCar().then(favCar => {
       this.favCars = favCar;
       //console.log(this.favCars);
@@ -73,9 +73,10 @@ export class FavoritesPage implements OnInit {
       this.showToast("FavCar removed!");
     
       this.loadItems();
+      this.getItem();
     });
   }
 
-  */
+  
   
 }
