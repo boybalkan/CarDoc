@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Plugins } from '@capacitor/core';
 import { Storage } from '@ionic/storage';
-//const { Storage } = Plugins;
 
 export interface favCar{
     marke:String;
@@ -20,20 +18,23 @@ const FAVCARSKEY = 'my-fav-cars';
 export class StorageService {
    
 
- //   constructor(private storage:Storage) { }
-      constructor() { }
+   constructor(private storage:Storage) { }
 
-
- /*   
+    
     addFavCar(item: favCar): Promise<any>{
         return this.storage.get(FAVCARSKEY).then((items : favCar[])=>{
             if(items){
                 items.push(item);
+                console.log(item);
                 return this.storage.set(FAVCARSKEY, items);
+                
             }else{
                 return this.storage.set(FAVCARSKEY, [item]);
             }
+           
         });
+       
+        
     }
 
     getFavCar(): Promise<favCar[]>{
@@ -56,6 +57,6 @@ export class StorageService {
         });
     }
     
-*/
+
  
 }

@@ -6,14 +6,14 @@ import { favCar } from './storage.service';
   providedIn: 'root'
 })
 export class DataService {
-  extras: favCar = <favCar>{};;
+  extras: favCar = <favCar>{};
   searchData:any[];
   
 
   constructor(private http: HttpClient) { 
    
   }
-
+  
   public setDataSerivce(data){
     this.extras = data;
   }

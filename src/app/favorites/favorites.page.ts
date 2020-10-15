@@ -9,7 +9,7 @@ import { favCar, StorageService } from '../services/storage.service';
 
 const { Storage } = Plugins;
 
-export interface b{value:String};
+
 
 @Component({
   selector: 'app-favorites',
@@ -21,34 +21,42 @@ export class FavoritesPage implements OnInit {
 
    testVlue:string;
   favCars: favCar[] = [];
+  
   newFavCar: favCar = <favCar>{};
 
-  alles:b = <b>{};
-  
+  thisproduct: [];
  
   constructor(private storageService:StorageService, private plt:Platform, private toastController:ToastController) {   
-  //  this.plt.ready().then(() => {
-   //   this.loadItems();
-    //});
-
-    this.getItem();
-
-
+    (this.getItem());
+    
+   /* this.plt.ready().then(() => {
+      this.loadItems();
+    });
+    */
    }
 
   ngOnInit() {
   }
 
   async getItem(){
-    const products = await Storage.get({key:'products'});
-   
-    console.log(JSON.parse(products.value));
+    const products = await Storage.get({key:'favCars'});
+    //this.favCars.push(JSON.parse((products).value)) ;
+    //console.log(JSON.parse(products.value));
+    //console.log( this.favCars);
+
+    this.thisproduct = JSON.parse((products).value);
+    console.log(this.thisproduct);
+    return JSON.parse(products.value);
   }
-/*
-  loadItems(){
+
+  async removeItem(){
+    await Storage.remove({key:'favCars'});
+  }
+
+/*  loadItems(){
     this.storageService.getFavCar().then(favCar => {
       this.favCars = favCar;
-      console.log(this.favCars);
+      //console.log(this.favCars);
     });
   }
 
@@ -67,5 +75,7 @@ export class FavoritesPage implements OnInit {
       this.loadItems();
     });
   }
+
   */
+  
 }
