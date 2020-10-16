@@ -18,20 +18,12 @@ const { Storage } = Plugins;
 export class CarPage implements OnInit {
   @Input('product') product:any;
   isFav:boolean=false;
-
   favCars: favCar[] = [];
   newFavCar: favCar = <favCar>{};
   car : favCar = <favCar>{};
 
   constructor(private navExtras:DataService, private router:Router, private storage:StorageService, private storageService:StorageService, private plt:Platform, private toastController:ToastController) {
     this.car  = navExtras.getDataService();
-    //this.favCars.push(this.car);
-    //console.log(this.favCars);
-    //this.addItem();
-
-    
-   
-    //this.setItem();
     this.addItem();
    
     this.plt.ready().then(() => {
@@ -50,10 +42,10 @@ export class CarPage implements OnInit {
     });
 
     if(!this.isFav || this.car === null){
-      this.showToast('Added to Favorites!');
+      this.showToast('Added to favorites!');
       this.isFav=true;
     }else{
-      this.showToast("FavCar removed!");
+      this.showToast("Removed from favorites!");
       this.isFav=false;
     }    
 }
@@ -69,7 +61,7 @@ async removeItem(){
 }
 
 
- addItem(){
+  addItem(){
     this.newFavCar.hsnTsn = this.car.hsnTsn;
     this.newFavCar.marke = this.car.marke;
     this.newFavCar.baujahr = this.car.baujahr;
@@ -84,7 +76,7 @@ async removeItem(){
       //console.log(this.favCars);
       
     });
-    console.log(this.newFavCar);    
+    //console.log(this.newFavCar);    
   }
   
   deleteItem(favCar:favCar){

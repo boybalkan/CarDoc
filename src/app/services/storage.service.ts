@@ -25,7 +25,7 @@ export class StorageService {
         return this.storage.get(FAVCARSKEY).then((items : favCar[])=>{
             if(items){
                 items.push(item);
-                console.log(item);
+                //console.log(item);
                 return this.storage.set(FAVCARSKEY, items);
                 
             }else{
@@ -55,8 +55,16 @@ export class StorageService {
             }
             return this.storage.set(FAVCARSKEY, toKeep);
         });
+        
     }
-    
+
+    deleteAllFavCars(): Promise<favCar>{
+        return this.storage.get(FAVCARSKEY).then((items:favCar[]) => {
+            let empty:favCar[] = [];
+            return this.storage.set(FAVCARSKEY, empty);
+        });
+    }
+  
 
  
 }

@@ -5,10 +5,11 @@ import { Plugins } from '@capacitor/core';
 import { Platform, ToastController } from '@ionic/angular';
 import { favCar, StorageService } from '../services/storage.service';
 
+import { CarPage } from '../car/car.page';
+
 
 
 const { Storage } = Plugins;
-
 
 
 @Component({
@@ -19,16 +20,13 @@ const { Storage } = Plugins;
 export class FavoritesPage implements OnInit {
   @Input('product') product:any;
 
-   testVlue:string;
+  testVlue:string;
   favCars: favCar[] = [];
-  
   newFavCar: favCar = <favCar>{};
-
   thisproduct: [];
  
   constructor(private storageService:StorageService, private plt:Platform, private toastController:ToastController) {   
-    (this.getItem());
-    
+    this.getItem();    
     this.plt.ready().then(() => {
       this.loadItems();
     });
@@ -40,17 +38,15 @@ export class FavoritesPage implements OnInit {
 
   async getItem(){
     const products = await Storage.get({key:'favCars'});
-    //this.favCars.push(JSON.parse((products).value)) ;
-    //console.log(JSON.parse(products.value));
-    //console.log( this.favCars);
-
+    
     this.thisproduct = JSON.parse((products).value);
-    console.log(this.thisproduct);
+    //console.log(JSON.parse((products).value));
     return JSON.parse(products.value);
   }
 
   async removeItem(){
     await Storage.remove({key:'favCars'});
+    window.location.reload();
   }
 
   loadItems(){
@@ -60,23 +56,40 @@ export class FavoritesPage implements OnInit {
     });
   }
 
+  async deleteItem(favCar:favCar){
+    this.storageService.deleteFavCar(favCar.hsnTsn).then(favCar => {
+     console.log(favCar);
+      
+      this.product = favCar;
+      Storage.set({
+        key:"favCars",
+        value: JSON.stringify(favCar)
+      });
+      window.location.reload();
+    });
+    
+    this.showToast("FavCar removed!"); 
+  }
+
+  async deleteAllItems(){
+    console.log("DElete All");
+    this.storageService.deleteAllFavCars().then(emptyList => {
+      Storage.set({
+        key:"favCars",
+        value: JSON.stringify(emptyList)
+      });
+      window.location.reload();
+    });
+    this.showToast("All Cars removed from list!"); 
+  }
+
   async showToast(msg){
     const toast = await this.toastController.create({
       message: msg,
-      duration: 2000
+      duration: 1000
     });
     toast.present();
   }
-
-  deleteItem(favCar:favCar){
-    this.storageService.deleteFavCar(favCar.hsnTsn).then(facCar => {
-      this.showToast("FavCar removed!");
-    
-      this.loadItems();
-      this.getItem();
-    });
-  }
-
   
   
 }
