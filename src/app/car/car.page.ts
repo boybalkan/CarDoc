@@ -24,6 +24,7 @@ export class CarPage implements OnInit {
 
   constructor(private navExtras:DataService, private router:Router, private storage:StorageService, private storageService:StorageService, private plt:Platform, private toastController:ToastController) {
     this.car  = navExtras.getDataService();
+    //console.log(this.car);
     this.addItem();
    
     this.plt.ready().then(() => {
@@ -68,6 +69,9 @@ async removeItem(){
     this.newFavCar.modell = this.car.modell;
     this.newFavCar.motor = this.car.motor;
     this.newFavCar.krankheiten = this.car.krankheiten;
+    this.newFavCar.picFront =  this.car.picFront;
+    this.newFavCar.picBack = this.car.picBack;
+    this.newFavCar.picInside = this.car.picInside;
 
     this.storageService.addFavCar(this.newFavCar).then(favCar => {
       this.newFavCar = <favCar>{};

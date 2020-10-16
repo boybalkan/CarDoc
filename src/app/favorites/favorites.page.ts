@@ -5,10 +5,6 @@ import { Plugins } from '@capacitor/core';
 import { Platform, ToastController } from '@ionic/angular';
 import { favCar, StorageService } from '../services/storage.service';
 
-import { CarPage } from '../car/car.page';
-
-
-
 const { Storage } = Plugins;
 
 
@@ -20,7 +16,7 @@ const { Storage } = Plugins;
 export class FavoritesPage implements OnInit {
   @Input('product') product:any;
 
-  testVlue:string;
+  
   favCars: favCar[] = [];
   newFavCar: favCar = <favCar>{};
   thisproduct: [];
@@ -40,7 +36,7 @@ export class FavoritesPage implements OnInit {
     const products = await Storage.get({key:'favCars'});
     
     this.thisproduct = JSON.parse((products).value);
-    //console.log(JSON.parse((products).value));
+    console.log(JSON.parse((products).value));
     return JSON.parse(products.value);
   }
 
@@ -72,7 +68,7 @@ export class FavoritesPage implements OnInit {
   }
 
   async deleteAllItems(){
-    console.log("DElete All");
+    console.log("Delete All");
     this.storageService.deleteAllFavCars().then(emptyList => {
       Storage.set({
         key:"favCars",

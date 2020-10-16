@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'start',
+    redirectTo: 'pre-start',
     pathMatch: 'full'
   },
   {
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'car',
     loadChildren: () => import('./car/car.module').then( m => m.CarPageModule)
+  },
+  {
+    path: 'pre-start',
+    loadChildren: () => import('./pre-start/pre-start.module').then( m => m.PreStartPageModule)
   },
 
  

@@ -9,14 +9,16 @@ import { FavoritesPageRoutingModule } from './favorites-routing.module';
 import { FavoritesPage } from './favorites.page';
 import { FooterComponent } from '../components/footer/footer.component';
 import { HeaderComponent } from '../components/header/header.component';
+import { SharedComponentsModule } from '../components/shared-components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FavoritesPageRoutingModule
+    FavoritesPageRoutingModule,
+    SharedComponentsModule
   ],
-  declarations: [FavoritesPage, FooterComponent, HeaderComponent]
+  declarations: [FavoritesPage]
 })
 export class FavoritesPageModule {}

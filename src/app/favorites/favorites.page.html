@@ -3,17 +3,23 @@
   </ion-header>
 
 <ion-content>
-<ion-label> FAVORITENLISTE  
-  <ion-icon id="removeAllFavs" name="trash-outline" (click)="deleteAllItems()" ></ion-icon>
-</ion-label>
-<ion-list *ngFor="let newFavCar of thisproduct" lines="none">
+<div>5</div>
+<ion-label id="lab"> FAVORITENLISTE  </ion-label>
+  <ion-icon id="removeAllFavs"  name="trash-outline" (click)="deleteAllItems()" ></ion-icon>
+
+<ion-list class="child-item-infos" *ngFor="let favproduct of thisproduct" lines="none">
+
+
+  <app-favproduct [product]="favproduct"></app-favproduct>
+
+  <!--  
   <ion-grid>
     <ion-row  align-items-center >     
-      <ion-col size="4">
-        <ion-item class="child-item-infos"> {{ newFavCar.marke  }} {{ newFavCar.modell | uppercase }}</ion-item >
+      <ion-col size="5">
+        <ion-item class="child-item-infos"> {{ product.marke  }} {{ product.modell | uppercase }}</ion-item >
       </ion-col>
       <ion-col size="4">
-        <ion-item sclass="child-item-infos"> {{ newFavCar.baujahr  }}</ion-item >
+        <ion-item class="child-item-infos"> {{ product.baujahr  }} </ion-item >
       </ion-col> 
       <ion-col>
         <ion-item class="child-item-infos">
@@ -22,8 +28,14 @@
         </ion-col>
          
     </ion-row>
+
+    
+   
   </ion-grid>  
+  -->
 </ion-list>
+
+
 
 
 </ion-content>

@@ -1,0 +1,21 @@
+<ion-item class="child-item" text-wrap detail="false" lines="none">
+  <ion-grid>
+    <ion-row  align-items-center (click)="navigateToCarModellDescription()" >     
+      <ion-col size="4">
+        <ion-item class="child-item-infos"> {{ favproduct.marke  }} {{ favproduct.modell | uppercase }}</ion-item >
+      </ion-col>
+      <ion-col size="4">
+        <ion-item class="child-item-infos"> {{ favproduct.baujahr  }} </ion-item >
+      </ion-col> 
+      <ion-col>
+        <ion-item class="child-item-infos">
+           <ion-icon size="1" slot="end" id="removeItem" name="close-circle-outline" (click)="deleteItem(newFavCar)"></ion-icon>
+        </ion-item>
+        </ion-col>
+         
+    </ion-row>
+
+    
+   
+  </ion-grid> 
+</ion-item>
