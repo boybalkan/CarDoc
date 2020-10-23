@@ -5,7 +5,7 @@
       <p id="ident" class="verical-center">({{ car.hsnTsn}})</p>
 
      <ion-icon  name="star-outline" *ngIf="!isFav" class="favIcon verical-center"  (click)="setItem()"></ion-icon>
-      <ion-icon name="star" *ngIf="isFav" class="favIcon verical-center"  (click)="deleteItem()"></ion-icon>
+      <ion-icon name="star" *ngIf="isFav" class="favIcon verical-center"  (click)="unsetItem()"></ion-icon>
    
   </ion-toolbar>
 </ion-header>
@@ -23,12 +23,46 @@
     </ion-slide>
   </ion-slides>
   
-  <p id="krankheiten">
-    {{ car.krankheiten }}
-  </p>
+  <ion-label class="labelSchrift">
+    Mängel ab Werk
+  </ion-label>
+ 
+  <a class="info" href="#" onclick="window.open('https://www.adac.de/rund-ums-fahrzeug/auto-kaufen-verkaufen/neuwagenkauf/rechte-bei-maengeln-neuwagen/', '_system', 'location=yes'); return false;">
+    <ion-icon id="info" name="information-circle-outline" ></ion-icon>
+  </a>
+
+  <ion-list lines="none" no-padding>
+    <ion-item class="krankheiten" (click)="hide(1)" >     
+      <ion-label>Motor</ion-label>  
+      <ion-icon slot="end" name="arrow-down" *ngIf="!hideCatMotor"></ion-icon>
+      <ion-icon slot="end" name="arrow-up" *ngIf="hideCatMotor" ></ion-icon>    
+    </ion-item>
+    <div class="maengel" *ngIf="hideCatMotor">
+      BLABLA
+      {{ car.krankheiten }}
+    </div>  
   
+    <ion-item class="krankheiten"  (click)="hide(2)">
+      <ion-label>Fahrwerk</ion-label> 
+      <ion-icon slot="end" name="arrow-down" *ngIf="!hideCatFahrwerk"></ion-icon> 
+      <ion-icon slot="end" name="arrow-up" *ngIf="hideCatFahrwerk" ></ion-icon>            
+    </ion-item>
+    <div class="maengel" *ngIf="hideCatFahrwerk">
+      BLABLA
+      {{ car.krankheiten }}
+    </div>    
+      
+    <ion-item class="krankheiten"  (click)="hide(3)">
+      <ion-label>Elektrik</ion-label> 
+      <ion-icon slot="end" name="arrow-down" *ngIf="!hideCatElektrik"></ion-icon>  
+      <ion-icon slot="end" name="arrow-up" *ngIf="hideCatElektrik" ></ion-icon>           
+    </ion-item>
+    <div class="maengel" *ngIf="hideCatElektrik">
+      BLABLA
+      {{ car.krankheiten }}
+    </div> 
+    
+  </ion-list>
 </ion-content>
 
-<app-footer>
-  
-</app-footer>
+<app-footer></app-footer>

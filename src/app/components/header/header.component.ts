@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonSlides } from '@ionic/angular';
+import { AlertController, IonSlides } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -22,12 +22,14 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  constructor(private router : Router, private dataService:DataService ,private http:HttpClient, private httpService: HttpClient) { 
+  constructor() { 
      
      }
 
     ngOnInit(){ 
       
     }
+
+    
 
 }

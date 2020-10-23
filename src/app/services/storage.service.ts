@@ -8,9 +8,9 @@ export interface favCar{
     motor:String;
     hsnTsn:String;
     krankheiten:String;
-    picFront:String;
-    picBack:String;
-    picInside:String;
+    pic_url_front:String;
+    pic_url_back:String;
+    pic_url_inside:String;
 }
 
 const FAVCARSKEY = 'my-fav-cars';

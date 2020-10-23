@@ -19,6 +19,11 @@ automaticClose = true;
 searchData:any[];
 allInformation:any[] ;
 
+favInformation:any[]=[];
+allFavinformation:any[]=[];
+restInformation:any[] =[];
+allRestinformation:any[]=[];
+
 
 constructor(private http: HttpClient, private dataService :DataService, private pos:ActivatedRoute ){
   this.http.get('assets/information.json')
@@ -26,16 +31,17 @@ constructor(private http: HttpClient, private dataService :DataService, private 
     this.information = res['items'];
     this.allInformation=res['items'];
     
-
     this.sub = this.pos.params.subscribe(params => {
     this.mostSearched = params['pos'];
     //console.log(params);
+    
+    this.splitInformation();
    });
    if(this.mostSearched >= 0){
     this.openAccordion(this.mostSearched);
-    console.log(this.mostSearched);
+    //console.log(this.mostSearched);
    }else{
-    console.log(this.mostSearched);
+    //console.log(this.mostSearched);
    }
   
    //console.log(this.items);
@@ -43,6 +49,8 @@ constructor(private http: HttpClient, private dataService :DataService, private 
   });
  
   this.allInformation = this.information;
+  
+
 }
  ngOnInit(){
     }
@@ -73,20 +81,44 @@ openAccordion(i){
 }
 
 sucheAutoHersteller(ev: CustomEvent){
-  this.information = this.allInformation;
+  //this.information = this.allInformation;
+  this.favInformation = this.allFavinformation;
+  this.restInformation = this.allRestinformation;
+  
   const val = ev.detail.value;
   
   //console.log("All: " + this.information[1].children[1].children[1].hsnTsn);  
   //console.log(val);
   if(val && val.trim() !== ''){
     
-      this.information = this.information.filter(data => {
+     // this.information = this.information.filter(data => {
        // console.log(data.children);
-        return data.brand.toLocaleLowerCase().indexOf(val.trim().toLocaleLowerCase()) > -1;  
-      });
+     //   return data.brand.toLocaleLowerCase().indexOf(val.trim().toLocaleLowerCase()) > -1;  
+     // });
+      this.favInformation = this.favInformation.filter(data => {
+        // console.log(data.children);
+         return data.brand.toLocaleLowerCase().indexOf(val.trim().toLocaleLowerCase()) > -1;  
+       });
+       this.restInformation = this.restInformation.filter(data => {
+        // console.log(data.children);
+         return data.brand.toLocaleLowerCase().indexOf(val.trim().toLocaleLowerCase()) > -1;  
+       });
    
   }
   
+}
+
+async splitInformation(){  
+  for(let i = 0; i<5;i++){
+    this.favInformation[i] = this.allInformation[i];
+  }
+  for(let i = 5; i<this.allInformation.length;i++){
+    this.restInformation[i-5] = this.allInformation[i];
+  }
+  this.allFavinformation = this.favInformation;
+  this.allRestinformation = this.restInformation;
+  //console.log(this.favInformation);
+  //console.log(this.restInformation);
 }
 
 

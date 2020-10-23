@@ -5,11 +5,13 @@ import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FavproductComponent } from './favproduct/favproduct.component';
+import { HeaderinfoComponent } from './headerinfo/headerinfo.component';
+
 
 
 
 @NgModule({
-  declarations: [ProductComponent, FavproductComponent, HeaderComponent, FooterComponent],
+  declarations: [ProductComponent, FavproductComponent, HeaderComponent, FooterComponent, HeaderinfoComponent],
   imports: [
     CommonModule,
     IonicModule
@@ -18,7 +20,9 @@ import { FavproductComponent } from './favproduct/favproduct.component';
     ProductComponent,
     FavproductComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderinfoComponent
+    
   ]
 })
 export class SharedComponentsModule { }

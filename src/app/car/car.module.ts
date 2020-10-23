@@ -15,6 +15,7 @@ import { FooterComponent } from '../components/footer/footer.component';
     FormsModule,
     IonicModule,
     CarPageRoutingModule
+   
   ],
   declarations: [CarPage, FooterComponent]
 })

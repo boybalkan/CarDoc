@@ -1,0 +1,20 @@
+
+  <ion-toolbar>
+    <ion-slides pages [options]="slideOption" loop="true" #slider (ionSlidesDidLoad)="slidesDidLoad(slider)" class="slides-container">
+      <ion-slide>
+        <label class="brandImg">CarDoc</label> 
+      </ion-slide>
+      <ion-slide>
+        <img src="./assets/Werbung/autowerk4.jpg" alt="" class="carImg">
+      </ion-slide>
+      <ion-slide>
+        <img src="./assets/Werbung/autowerk5.jpg" alt="" class="carImg">
+      </ion-slide>
+      <ion-slide>
+        <img src="./assets/Werbung/autowerk.jpg" alt="" class="carImg">
+      </ion-slide>
+    </ion-slides>
+
+    <ion-icon id="info" name="information-circle-outline" (click)= "infoAlert()"></ion-icon>
+
+  </ion-toolbar>

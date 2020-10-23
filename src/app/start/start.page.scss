@@ -1,7 +1,6 @@
 .text{
     margin-left: 2%;
-    width: 90%;
-   
+    width: 90%;   
 }
 
 ion-grid{
@@ -10,10 +9,10 @@ ion-grid{
 
   ion-col{
       height: 150px;
-      border: solid 1px lightgray;
+     
       margin: 2px;
   }
-  ion-button{
+  .but{
       height: 130px;
   }
 
@@ -23,5 +22,20 @@ ion-grid{
     height: 40px;
     margin: 0 7% 10%;
   }
+
+
+#vehicles{
+    margin: 5% 0 0 10%;
+    width: 80%;
+   
+  
+    
+}
+.vehicles{
+    width: 23%;
+    border: solid 1px lightgray;     
+    text-align: center;
+ 
+}
 
   

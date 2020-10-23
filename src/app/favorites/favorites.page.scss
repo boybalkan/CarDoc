@@ -1,5 +1,5 @@
 div{
-    margin: 3% 0 0 5%;
+    margin: 3% 0 0 2%;
     color: #fff;
 }
 ion-list{
@@ -18,10 +18,17 @@ ion-label {
   
     margin: 5% 0 0 5%;
     
-    text-align: center;
+    text-align: left;
     font-weight: 600;
     font-size: 1.5rem;
     color: #598059;
+}
+
+.child-item, .child-item-infos{
+
+    padding: 0px;
+    
+ 
 }
 
 

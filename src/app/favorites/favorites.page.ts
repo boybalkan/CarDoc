@@ -36,7 +36,7 @@ export class FavoritesPage implements OnInit {
     const products = await Storage.get({key:'favCars'});
     
     this.thisproduct = JSON.parse((products).value);
-    console.log(JSON.parse((products).value));
+    //console.log(JSON.parse((products).value));
     return JSON.parse(products.value);
   }
 
@@ -86,6 +86,8 @@ export class FavoritesPage implements OnInit {
     });
     toast.present();
   }
+  
+  
   
   
 }

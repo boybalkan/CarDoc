@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-start',
@@ -13,5 +13,7 @@ export class StartPage  implements OnInit  {
  
   ngOnInit() {
   }
+
+  
 
 }

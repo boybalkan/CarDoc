@@ -8,8 +8,8 @@ ion-row, ion-col, ion-grid{
 ion-item{
     --background: #598059;  
     color:#fff;  
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
     
 }
 
@@ -18,11 +18,12 @@ ion-item{
     color: #fff;
 }
 
-.child-item{
+.child-item, .child-item-infos{
 
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
  
-    
-   
+}
+.item-native{
+    padding: 0;
 }

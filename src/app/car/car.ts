@@ -7,9 +7,9 @@ export class car{
     motor:String;
     hsnTsn:String;
     krankheiten:String;
-    picFront:String;
-    picBack:String;
-    picInside:String;
+    pic_url_front:String;
+    pic_url_back:String;
+    pic_url_inside:String;
 
 
     constructor(car?:any){
@@ -20,9 +20,9 @@ export class car{
             this.motor= car.motor;
             this.hsnTsn = car.hsnTsn;
             this.krankheiten = car.krankheiten;
-            this.picFront = car.picFront;
-            this.picBack = car.picBack;
-            this.picInside = car.picInside;
+            this.pic_url_front = car.pic_url_front ;
+            this.pic_url_back = car.pic_url_back;
+            this.pic_url_inside = car.pic_url_inside;
 
         }
     }

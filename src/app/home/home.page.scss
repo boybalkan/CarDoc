@@ -4,7 +4,7 @@ ion-searchbar, ion-toolbar{
   //--background: lightgray;
 }
 #searchbar{
-  margin: 5px 5% 5px 5%;
+  margin: 5px 5% 0 5%;
   width: 90%;
 }
 
@@ -73,4 +73,15 @@ ion-content{
 
 .platz{
   height: 20px;
+}
+
+.lab{
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 5% 5% ;
+  
+}
+
+#sortedBrand, #mostSearchedBrand{
+  margin-top: 5%;
 }

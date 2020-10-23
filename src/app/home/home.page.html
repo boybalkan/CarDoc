@@ -7,8 +7,9 @@
     <ion-searchbar animated (ionChange)="sucheAutoHersteller($event)"></ion-searchbar>
   </ion-toolbar>
 
-  
-  <ion-list *ngFor="let item of information; let i = index;" class="accordion-list" lines="none" detail="false" no-padding>
+  <div id="mostSearchedBrand">
+  <ion-label class="lab">Sorted (Most popular)</ion-label>
+  <ion-list *ngFor="let item of favInformation; let i = index;" class="accordion-list" lines="none" detail="false" no-padding>
     <ion-item tappable (click)="toggleSection(i)" [ngClass]="{ 'section-active': item.open, 'section': !item.open }">
       <ion-icon slot="start" name="arrow-forward" *ngIf="!item.open"></ion-icon>
       <ion-icon slot="start" name="arrow-down" *ngIf="item.open"></ion-icon>
@@ -36,6 +37,39 @@
       </ion-list>
     </div>
   </ion-list>
+</div>
+
+  <div id="sortedBrand">
+  <ion-label class="lab">Sorted (A-Z) </ion-label>
+  <ion-list *ngFor="let item of restInformation; let i = index;" class="accordion-list" lines="none" detail="false" no-padding>
+    <ion-item tappable (click)="toggleSection(i)" [ngClass]="{ 'section-active': item.open, 'section': !item.open }">
+      <ion-icon slot="start" name="arrow-forward" *ngIf="!item.open"></ion-icon>
+      <ion-icon slot="start" name="arrow-down" *ngIf="item.open"></ion-icon>
+      <ion-label>
+        {{ item.brand | uppercase }}
+      </ion-label>
+    </ion-item>
+
+    <div *ngIf="item.children && item.open">
+      <ion-list *ngFor="let child of item.children; let j = index;" lines="none" class="child-list" no-padding>
+        <ion-item tappable (click)="toggleItem(i, j)" *ngIf="child.children" [ngClass]="{ 'child-active': child.open, 'child': !child.open }">
+          <ion-icon slot="start" name="add" *ngIf="!child.open"></ion-icon>
+          <ion-icon slot="start" name="close" *ngIf="child.open"></ion-icon>
+          <ion-label>
+            {{ child.modell | uppercase}}
+          </ion-label>
+        </ion-item>
+
+        <app-product [product]="child" *ngIf="!child.children"></app-product>
+
+        <ion-list *ngIf="child.children && child.open" class="product-list" lines="none" no-padding no-margin>
+          <app-product [product]="product" *ngFor="let product of child.children"></app-product>
+        </ion-list>
+
+      </ion-list>
+    </div>
+  </ion-list>
+</div>
 
   <div class="platz"></div>
 
